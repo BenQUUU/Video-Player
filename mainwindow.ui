@@ -176,6 +176,7 @@
     <property name="title">
      <string>Select Video File</string>
     </property>
+    <addaction name="actionOpen"/>
    </widget>
    <addaction name="menuSelect_Video_File"/>
   </widget>
@@ -183,12 +184,6 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
-   </property>
-   <property name="toolTip">
-    <string>Open</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
    </property>
   </action>
  </widget>

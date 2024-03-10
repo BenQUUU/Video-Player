@@ -7,6 +7,7 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
+//#include "opencv2/opencv.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,10 +28,6 @@ private slots:
 
     void on_horizontalSlider_Duration_valueChanged(int value);
 
-    void on_pushButton_Seek_Backward_toggled(bool checked);
-
-    void on_pushButton_Seek_Forward_toggled(bool checked);
-
     void on_pushButton_Play_Pause_clicked();
 
     void on_pushButton_Stop_clicked();
@@ -39,9 +36,14 @@ private slots:
 
     void on_horizontalSlider_Volume_valueChanged(int value);
 
+    void on_pushButton_Seek_Backward_clicked();
+
+    void on_pushButton_Seek_Forward_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *Player;
+    QAudioOutput *Audio;
     QVideoWidget *Video;
     qint64 mDuration;
     bool IS_Pause = true;
