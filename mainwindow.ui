@@ -174,16 +174,28 @@
    </property>
    <widget class="QMenu" name="menuSelect_Video_File">
     <property name="title">
-     <string>Select Video File</string>
+     <string>File</string>
     </property>
     <addaction name="actionOpen"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionHuman_detection"/>
+   </widget>
    <addaction name="menuSelect_Video_File"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionHuman_detection">
+   <property name="text">
+    <string>Human detection</string>
    </property>
   </action>
  </widget>

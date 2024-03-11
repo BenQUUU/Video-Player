@@ -7,7 +7,8 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
-//#include "opencv2/opencv.hpp"
+#include "opencv2/opencv.hpp"
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,10 @@ public:
     ~MainWindow();
 
 private slots:
+    void durationChanged(qint64 duration);
+
+    void positionChanged(qint64 duration);
+
     void on_actionOpen_triggered();
 
     void on_horizontalSlider_Duration_valueChanged(int value);
@@ -40,6 +45,8 @@ private slots:
 
     void on_pushButton_Seek_Forward_clicked();
 
+    void on_actionHuman_detection_triggered();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *Player;
@@ -48,5 +55,7 @@ private:
     qint64 mDuration;
     bool IS_Pause = true;
     bool IS_Muted = false;
+
+    void updateDuration(qint64 Duration);
 };
 #endif // MAINWINDOW_H

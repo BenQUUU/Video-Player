@@ -5,7 +5,17 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++20
 
 INCLUDEPATH += /usr/include/opencv4
-LIBS += -lopencv_core -lopencv_imgproc -lopencv_highgui
+LIBS += -lopencv_core \
+-lopencv_imgproc \
+-lopencv_highgui \
+-lopencv_videoio \
+-lopencv_video \
+-lopencv_imgcodecs \
+-lopencv_objdetect \
+-lopencv_features2d \
+-lopencv_imgproc \
+-lopencv_calib3d \
+-lopencv_dnn
 
 
 # You can make your code fail to compile if it uses deprecated APIs.
