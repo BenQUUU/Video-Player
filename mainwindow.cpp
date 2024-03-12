@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -163,48 +164,25 @@ void MainWindow::on_actionHuman_detection_triggered()
     processingMsg.setModal(true);
     processingMsg.show();
 
-
     // Pozwól użytkownikowi wybrać plik wideo
     QString fileName = QFileDialog::getOpenFileName(this, "Select Video File", "", "MP4 Files (*.mp4)");
-    if (fileName.isEmpty())
+    if (fileName.isEmpty()) {
+        processingMsg.close();
         return; // Użytkownik anulował wybór pliku
+    }
 
     // Wykonaj detekcję ruchu i zapisz do nowego pliku MP4
     QString outputFileName = QFileDialog::getSaveFileName(this, "Save Video", "", "MP4 Files (*.mp4)");
-    if (outputFileName.isEmpty())
-        return;
-
-    // Otwórz plik wideo
-    cv::VideoCapture cap(fileName.toStdString());
-    if (!cap.isOpened()) {
-        QMessageBox::critical(this, "Error", "Failed to open video file.");
+    if (outputFileName.isEmpty()) {
+        processingMsg.close();
         return;
     }
 
-    cv::Mat frame;
-    cv::Ptr<cv::BackgroundSubtractorMOG2> bg_subtractor = cv::createBackgroundSubtractorMOG2();
-    cv::VideoWriter output(outputFileName.toStdString(), cv::VideoWriter::fourcc('m','p','4','v'), 30, cv::Size((int)cap.get(cv::CAP_PROP_FRAME_WIDTH),(int)cap.get(cv::CAP_PROP_FRAME_HEIGHT)));
+    // Utwórz obiekt procesora wideo i wywołaj metodę przetwarzania wideo
+    VideoProcessor videoProcessor;
+    videoProcessor.processVideo(fileName, outputFileName);
 
-    while (cap.read(frame)) {
-        // Wykonaj detekcję ruchu
-        cv::Mat fg_mask;
-        bg_subtractor->apply(frame, fg_mask);
-
-        // Znajdź kontury
-        std::vector<std::vector<cv::Point>> contours;
-        cv::findContours(fg_mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
-
-        // Sprawdź, czy są jakiekolwiek kontury (ruch)
-        if (!contours.empty()) {
-            // Zapisz ramkę z ruchem do nowego pliku MP4
-            output.write(frame);
-        }
-    }
-
-    output.release(); // Zwolnij zasoby
     processingMsg.close(); // Zamknij okno dialogowe o przetwarzaniu
-
-    QMessageBox::information(this, "Info", "Human detection completed. Saved as: " + outputFileName);
 }
 
 

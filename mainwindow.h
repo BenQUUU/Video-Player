@@ -7,8 +7,8 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
-#include "opencv2/opencv.hpp"
-#include <vector>
+#include "videoprocessor.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -24,10 +24,12 @@ LIBS += -lopencv_core \
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    videoprocessor.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    videoprocessor.h
 
 FORMS += \
     mainwindow.ui
