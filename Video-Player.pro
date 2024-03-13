@@ -4,6 +4,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++20
 
+CONFIG += debug
+QMAKE_CXXFLAGS_DEBUG += -g
+
 INCLUDEPATH += /usr/include/opencv4
 LIBS += -lopencv_core \
 -lopencv_imgproc \
