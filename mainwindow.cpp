@@ -164,25 +164,22 @@ void MainWindow::on_actionHuman_detection_triggered()
     processingMsg.setModal(true);
     processingMsg.show();
 
-    // Pozwól użytkownikowi wybrać plik wideo
     QString fileName = QFileDialog::getOpenFileName(this, "Select Video File", "", "MP4 Files (*.mp4)");
     if (fileName.isEmpty()) {
         processingMsg.close();
-        return; // Użytkownik anulował wybór pliku
+        return;
     }
 
-    // Wykonaj detekcję ruchu i zapisz do nowego pliku MP4
     QString outputFileName = QFileDialog::getSaveFileName(this, "Save Video", "", "MP4 Files (*.mp4)");
     if (outputFileName.isEmpty()) {
         processingMsg.close();
         return;
     }
 
-    // Utwórz obiekt procesora wideo i wywołaj metodę przetwarzania wideo
     VideoProcessor videoProcessor;
     videoProcessor.processVideo(fileName, outputFileName);
 
-    processingMsg.close(); // Zamknij okno dialogowe o przetwarzaniu
+    processingMsg.close();
 }
 
 
