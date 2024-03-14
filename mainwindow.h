@@ -29,6 +29,8 @@ private slots:
 
     void positionChanged(qint64 duration);
 
+    void performVideoProcessing(std::function<void(VideoProcessor&, const QString&, const QString&)> func);
+
     void on_actionOpen_triggered();
 
     void on_horizontalSlider_Duration_valueChanged(int value);
@@ -46,6 +48,8 @@ private slots:
     void on_pushButton_Seek_Forward_clicked();
 
     void on_actionHuman_detection_triggered();
+
+    void on_actionMotion_detection_triggered();
 
 private:
     Ui::MainWindow *ui;

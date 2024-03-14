@@ -12,7 +12,8 @@ class VideoProcessor
 {
 public:
     VideoProcessor();
-    void processVideo(const QString& inputFileName, const QString& outputFileName);
+    void processHumanDetection(const QString& inputFileName, const QString& outputFileName);
+    void processMotionDetection(const QString& inputFileName, const QString& outputFileName);
 };
 
 #endif // VIDEOPROCESSOR_H
