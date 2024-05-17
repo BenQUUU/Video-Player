@@ -4,6 +4,7 @@ Media player with support for .mp4 files. It also has functions for detecting th
 
 # Requirements
 * OpenCV: ``sudo apt-get install libopencv-dev``
+* FFmpeg: ``sudo apt install ffmpeg``
 
 # Building
 * Configure ``qmake``, ``git`` and any ``C++`` compiler
